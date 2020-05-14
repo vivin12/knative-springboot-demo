@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: knative-springboot
+spec:
+  template:
+    metadata:
+      name: knative-springboot-v2
+    spec:
+      containers:
+      - image: gooner4life/knative-springboot:v1
+        env:
+        - name: version
+          value: v2
+        livenessProbe:
+          httpGet:
+            path: /health/live
+        readinessProbe:
+          httpGet:
+            path: /health/ready

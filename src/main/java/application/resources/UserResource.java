@@ -18,7 +18,7 @@ public class UserResource implements IUserResource {
     private static Integer counter = 0;
     private Set<String> names = new HashSet<>();
 
-    @GetMapping("{name}")
+    @GetMapping("hello/{name}")
     public String hello(@PathVariable("name") String name) {
         System.out.println("Service invoked by :" + name);
         StringBuilder response = new StringBuilder();
