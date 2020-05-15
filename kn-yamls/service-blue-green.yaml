@@ -12,10 +12,10 @@ spec:
           value: v2
         livenessProbe:
           httpGet:
-            path: /health/live
+            path: /liveness
         readinessProbe:
           httpGet:
-            path: /health/ready
+            path: /readiness
   traffic:
   - tag: v1
     revisionName: knative-springboot-v1

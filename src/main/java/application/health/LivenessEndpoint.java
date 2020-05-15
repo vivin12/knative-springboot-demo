@@ -25,7 +25,7 @@ public class LivenessEndpoint {
 
     @ReadOperation
     public String testLiveness() {
-        return "{\"status\":\"UP\"}";
+        return "{\"status\":\"UP!\"}";
     }
 
 }

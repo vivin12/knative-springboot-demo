@@ -13,9 +13,9 @@ spec:
       - image: gooner4life/knative-springboot:v1
         livenessProbe:
           httpGet:
-            path: /health/live
+            path: /liveness
         readinessProbe:
           httpGet:
-            path: /health/ready
+            path: /readiness
 
 
