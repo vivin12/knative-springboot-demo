@@ -58,3 +58,18 @@ we use the below CLI's in this demo. Follow download instructions for your OS.
  7. Let’s clean up everything. Below command will delete all the resources associated with the knative service that you created.
 
     `kn service delete knative-springboot` 
+    
+## Steps to create knative service using yaml files
+
+Skip the first 2 steps if you have already logged in and created a project in OCP.
+
+1. Login to your OCP cluster from terminal. 
+2. Create a new project 
+   
+   `oc new-project knative-demo`
+
+3. Now let’s try to create the service using a yaml files. Let’s apply the first yaml which creates revision 1 of the app.
+   
+  `oc apply -f service-v1.yaml`
+
+4. Now apply the yaml file `service-v2.yaml`which will create revision 2 and by default all of the traffic will be routed to revision 2.
