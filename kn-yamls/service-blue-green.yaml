@@ -13,9 +13,9 @@ spec:
         livenessProbe:
           httpGet:
             path: /liveness
-        readinessProbe:
-          httpGet:
-            path: /readiness
+#        readinessProbe:
+#          httpGet:
+#            path: /readiness
   traffic:
   - tag: v1
     revisionName: knative-springboot-v1

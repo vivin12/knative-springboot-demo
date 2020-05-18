@@ -12,9 +12,9 @@ spec:
           livenessProbe:
             httpGet:
               path: /liveness
-          readinessProbe:
-            httpGet:
-              path: /readiness
+#          readinessProbe:
+#            httpGet:
+#              path: /readiness
 
 
 
