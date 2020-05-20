@@ -118,6 +118,29 @@ we use the below CLI's in this demo. Follow download instructions for your OS.
 
     `kn service delete knative-springboot` 
     
+## Steps to create knative service using appsody
+
+Folks with access to appsody stack can follow the below instructions to create a knative service using appsody CLI. We assume that you used appsody to initialize the project. 
+
+1. Run appsody build which will create a docker image on you local machine. 
+
+   ```
+   cd knative-springboot
+   appsody build
+   ```
+2. You can push the image to your dockerhub or another registry and then use that image to deploy to your Openshift cluster as a knative service using appsody. Using the --knative flag with the appsody build or appsody deploy commands sets the flag createKnativeService in the deployment manifest to true.
+Note that you need to configure your cluster to have access to pull from whatever registry you are using.
+ 
+    `appsody deploy -t <username/repository[:tag]> --push --namespace mynamespace [--knative]`
+    
+    Alternatively you can just use the image we have on dockerhub so you can skip the steps of building and pushing the image.
+
+   `appsody deploy -t gooner4life/appsody-springboot:v1 --namespace <your namespace> --knative`
+   
+3. Check to verify that kn service got created.
+  
+  `kn service list`
+ 
 ## Steps to create knative service using yaml files
 
 Skip the first 2 steps if you have already logged in and created a project in OCP.
