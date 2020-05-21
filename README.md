@@ -155,3 +155,5 @@ Skip the first 2 steps if you have already logged in and created a project in OC
   `oc apply -f service-v1.yaml`
 
 4. Now apply the yaml file `service-v2.yaml`which will create revision 2 and by default all of the traffic will be routed to revision 2.
+
+5. Let's switch back the traffic to revision 1.
