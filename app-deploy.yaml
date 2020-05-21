@@ -51,6 +51,7 @@ metadata:
     stack.appsody.dev/id: java-spring-boot2
     stack.appsody.dev/version: 0.3.28
   name: knative-springboot-demo
+  namespace: va-dev
 spec:
   applicationImage: dev.local/knative-springboot-demo
   createKnativeService: true
