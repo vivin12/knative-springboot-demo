@@ -1,5 +1,64 @@
 # knative-springboot-demo
 
+This project was createad using appsody stack which is a developer tool that comes with cloud paks for application product by IBM. The first part "Steps to initialize a project using appsody" is just for folks interested in creating app with appsody stack from scratch. Skip over to "Prerequisites" if you just want to create a knative service. 
+
+## Steps to initialize a project using appsody 
+
+To install appsody CLI follow instructions for your OS - https://appsody.dev/docs/installing/installing-appsody/
+Follow these steps if you have access to appsody stack and you would like to initialize project using appsody.
+
+1. To check the repo's available for you 
+   
+   `appsody repo list`
+
+2. To remove a repo 
+   
+   `appsody repo remove <NAME>`
+
+3. To check all the available templates do  
+
+   `appsody list`
+    
+4. The repo with `*` before it's name is the selected one and if you to initialize a project from a template that is in a   different repo you need to switch to that repo. To do that run the following command. 
+   
+   ```
+    appsody repo set-default <repo-name>
+    eg: appsody repo set-default kabanero
+   ```
+   
+5. To initialize a project using a template create the project directory and run the following command.
+   
+   ```
+    mkdir knative-springboot
+    appsody init java-spring-boot2 
+   ```
+6. To build your project do the below command and it will locally build a docker image of your appsody project. It helps you to check that stack is stable and init is done correctly. You do not need to run build directly ever again
+
+   ```
+    cd knative-springboot
+    appsody build
+   ```
+7. To run the project do
+   
+   `appsody run`
+
+   Open the application using the web browser at `http://localhost:8080`
+
+   By default, the template provides the below endpoints:
+     ```
+        Health endpoint: http://localhost:8080/actuator/health
+
+        Liveness endpoint: http://localhost:8080/actuator/liveness
+
+        Metrics endpoint: http://localhost:8080/actuator/metrics
+
+        Prometheus endpoint: http://localhost:8080/actuator/prometheus
+     ```
+
+For more details, refer - `https://github.com/appsody/stacks/blob/master/incubator/java-spring-boot2/README.md`
+
+Now you are all set to start building your app. 
+
 ## Prerequisites
 
 A k8’s cluster with knative serving installed on it. If you have an open shift cluster without knative installed follow the instructions on the below link to install the knative operator.
@@ -59,6 +118,29 @@ we use the below CLI's in this demo. Follow download instructions for your OS.
 
     `kn service delete knative-springboot` 
     
+## Steps to create knative service using appsody
+
+Folks with access to appsody stack can follow the below instructions to create a knative service using appsody CLI. We assume that you used appsody to initialize the project. 
+
+1. Run appsody build which will create a docker image on you local machine. 
+
+   ```
+   cd knative-springboot
+   appsody build
+   ```
+2. You can push the image to your dockerhub or another registry and then use that image to deploy to your Openshift cluster as a knative service using appsody. Using the --knative flag with the appsody build or appsody deploy commands sets the flag createKnativeService in the deployment manifest to true.
+Note that you need to configure your cluster to have access to pull from whatever registry you are using.
+ 
+    `appsody deploy -t <username/repository[:tag]> --push --namespace mynamespace [--knative]`
+    
+    Alternatively you can just use the image we have on dockerhub so you can skip the steps of building and pushing the image.
+
+   `appsody deploy -t gooner4life/appsody-springboot:v1 --namespace <your namespace> --knative`
+   
+3. Check to verify that kn service got created.
+  
+  `kn service list`
+ 
 ## Steps to create knative service using yaml files
 
 Skip the first 2 steps if you have already logged in and created a project in OCP.
