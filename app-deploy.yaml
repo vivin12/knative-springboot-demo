@@ -53,7 +53,7 @@ metadata:
   name: knative-springboot-demo
 spec:
   applicationImage: dev.local/knative-springboot-demo
-  createKnativeService: false
+  createKnativeService: true
   expose: true
   livenessProbe:
     failureThreshold: 12
