@@ -163,3 +163,5 @@ Skip the first 2 steps if you have already logged in and created a project in OC
 6. Let's try splitting traffic between versions now. 
    
    `oc apply -f service-traffic-split.yaml`
+
+7. Now let's test auto-scalling.
