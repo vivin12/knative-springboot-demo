@@ -160,4 +160,6 @@ Skip the first 2 steps if you have already logged in and created a project in OC
 
   `oc apply -f service-blue-green.yaml`
 
-6. Let's try the traffic split now. 
+6. Let's try splitting traffic between versions now. 
+   
+   `oc apply -f service-traffic-split.yaml`
