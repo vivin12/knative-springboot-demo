@@ -156,6 +156,8 @@ Skip the first 2 steps if you have already logged in and created a project in OC
 
 4. Now apply the yaml file `service-v2.yaml`which will create revision 2 and by default all of the traffic will be routed to revision 2.
 
-5. Let's switch back the traffic to revision 1.
+5. Let's assume that something is wrong on version 2 and you want to switch back all the traffic to revision 1 until the issue with revision 2 is figuered out. To do this view and apply the below yaml.
+
+  `oc apply -f service-blue-green.yaml`
 
 6. Let's try the traffic split now. 
