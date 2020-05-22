@@ -33,4 +33,37 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <plugins>
+
+      <!-- Enable Liberty Maven plugin -->
+      <!-- Enable Liberty Maven plugin -->
+      <plugin>
+        <groupId>io.openliberty.tools</groupId>
+        <artifactId>liberty-maven-plugin</artifactId>
+        <version>3.2</version>
+        <configuration>
+          <appsDirectory>apps</appsDirectory>
+          <installAppPackages>spring-boot-project</installAppPackages>
+          <include>minify,runnable</include>
+          <packageName>knative-springboot</packageName>
+        </configuration>
+        <executions>
+          <execution>
+            <id>package-server</id>
+            <phase>package</phase>
+            <goals>
+              <goal>create</goal>
+              <goal>install-feature</goal>
+              <goal>deploy</goal>
+              <goal>package</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- End of Liberty Maven plugin -->
+      <!-- End of Liberty Maven plugin -->
+    </plugins>
+  </build>
+
 </project>
