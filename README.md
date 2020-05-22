@@ -11,28 +11,34 @@ Follow these steps if you have access to appsody stack and you would like to ini
    
    `appsody repo list`
 
-2. To remove a repo 
+2. To add a repo 
    
-   `appsody repo remove <NAME>`
+   `appsody repo add <REPO-NAME> <URL of the repo>`
+   
+   `eg:appsody repo add kabanero https://github.com/kabanero-io/kabanero-stack-hub/releases/download/0.6.5/kabanero-stack-hub-  index.yaml`
 
-3. To check all the available templates do  
+3. To remove a repo 
+   
+   `appsody repo remove <REPO-NAME>`
+
+4. To check all the available templates do  
 
    `appsody list`
     
-4. The repo with `*` before it's name is the selected one and if you to initialize a project from a template that is in a   different repo you need to switch to that repo. To do that run the following command. 
+5. The repo with `*` before it's name is the selected one and if you to initialize a project from a template that is in a   different repo you need to switch to that repo. To do that run the following command. 
    
    ```
-    appsody repo set-default <repo-name>
+    appsody repo set-default <REPO-NAME>
     eg: appsody repo set-default kabanero
    ```
    
-5. To initialize a project using a template create the project directory and run the following command.
+6. To initialize a project using a template create the project directory and run the following command.
    
    ```
     mkdir knative-springboot
     appsody init java-spring-boot2 
    ```
-6. To build your project do the below command and it will locally build a docker image of your appsody project. It helps you to check that stack is stable and init is done correctly. You do not need to run build directly ever again
+7. To build your project do the below command and it will locally build a docker image of your appsody project. It helps you to check that stack is stable and init is done correctly. You do not need to run build directly ever again
 
    ```
     cd knative-springboot
@@ -42,20 +48,19 @@ Follow these steps if you have access to appsody stack and you would like to ini
    
    `appsody run`
 
-   Open the application using the web browser at `http://localhost:8080`
+   Open the application using the web browser at http://localhost:8080
 
    By default, the template provides the below endpoints:
-     ```
-        Health endpoint: http://localhost:8080/actuator/health
+    
+   Health endpoint: http://localhost:8080/actuator/health
 
-        Liveness endpoint: http://localhost:8080/actuator/liveness
+   Liveness endpoint: http://localhost:8080/actuator/liveness
 
-        Metrics endpoint: http://localhost:8080/actuator/metrics
+   Metrics endpoint: http://localhost:8080/actuator/metrics
 
-        Prometheus endpoint: http://localhost:8080/actuator/prometheus
-     ```
-
-For more details, refer - `https://github.com/appsody/stacks/blob/master/incubator/java-spring-boot2/README.md`
+   Prometheus endpoint: http://localhost:8080/actuator/prometheus
+    
+For more details on the springboot template, refer - https://github.com/appsody/stacks/blob/master/incubator/java-spring-boot2/README.md
 
 Now you are all set to start building your app. 
 
